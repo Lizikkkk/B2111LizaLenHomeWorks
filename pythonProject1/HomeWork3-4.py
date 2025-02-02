@@ -1,4 +1,4 @@
-import random
+import random #я буду додавати папуг, до поки вона не стане нормальною :)
 
 
 class Human:
