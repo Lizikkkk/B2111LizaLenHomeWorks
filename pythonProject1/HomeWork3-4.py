@@ -91,7 +91,7 @@ class Human:
         if self.home.food >= 5:
             self.parrot.golod -= 10
         else:
-            print("Lets buy food for parrot")
+            print(f"Lets buy food for {self.parrot.name}")
             self.shopping("food")
 
     def play_parrot(self):
@@ -133,7 +133,7 @@ class Human:
             print(f"I am a {self.job.job}")
         if self.parrot is None:
             self.get_parrot()
-            print(f"I am getting a parrot")
+            print(f"I am getting a parrot, Parrot's name is {self.parrot.name}")
         self.day_indexes(day)
         dice = random.randint(1, 6)
         if self.satiety < 20:
@@ -161,10 +161,10 @@ class Human:
             print("Time for treats")
             self.shopping("delicacies")
         elif dice == 5:
-            print("It's time to play with parrot!")
+            print(f"It's time to play with {self.parrot.name}!")
             self.play_parrot()
         elif dice == 6:
-            print("It's time to feed parrot!")
+            print(f"It's time to feed {self.parrot.name}!")
             self.feed_parrot()
 
 
@@ -199,9 +199,10 @@ class Home:
         self.mess = 0
 
 class Parrot:
-    def __init__(self):
-        self.golod = 50 #чим більше - тим більше голод
-        self.igrat = 50 #чим більше - тим більше хоче гратися
+    def __init__(self, name=input("name of parrot - ")):
+        self.name = name
+        self.golod = 40 #чим більше - тим більше голод
+        self.igrat = 40 #чим більше - тим більше хоче гратися
 
 
 class Job:
@@ -218,7 +219,7 @@ list_of_job = {
     "Rust developer": {"salary": 70, "gladness_less": 1},
 }
 
-my_human = Human(name=input("name - "))
+my_human = Human(name=input("name of human - "))
 for day in range (1,32):
     if my_human.live(day) == False:
         break
